@@ -55,7 +55,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#contact-us" className="hover:text-orange-500">
+              <a href="/contact" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" /> Contact Us
               </a>
             </li>
@@ -118,12 +118,12 @@ const Footer = () => {
         </p>
         <div className="flex justify-end space-x-4 mr-4"> {/* Move social media icons a bit to the left */}
           {/* Facebook Icon with Blue background */}
-          <a href="#facebook" className="flex items-center justify-center bg-blue-600 text-white rounded-full p-3 hover:bg-blue-700">
+          <a href="https://www.facebook.com/profile.php?id=61566853419921&mibextid=LQQJ4d&rdid=334R7nS7FYFV2ZGF&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FiqUqq8TYkhJzU4NS%2F%3Fmibextid%3DLQQJ4d" className="flex items-center justify-center bg-blue-600 text-white rounded-full p-3 hover:bg-blue-700">
             <FontAwesomeIcon icon={faFacebook} />
           </a>
 
           {/* Instagram Icon with Shiny Pink background */}
-          <a href="#instagram" className="flex items-center justify-center bg-gradient-to-r from-pink-500 to-pink-700 text-white rounded-full p-3 hover:from-pink-600 hover:to-pink-800">
+          <a href="https://www.instagram.com/bitesfusion.in/profilecard/?igsh=MTNjc2hnZ2N2bDJ1aA%3D%3D" className="flex items-center justify-center bg-gradient-to-r from-pink-500 to-pink-700 text-white rounded-full p-3 hover:from-pink-600 hover:to-pink-800">
             <FontAwesomeIcon icon={faInstagram} />
           </a>
         </div>

@@ -60,18 +60,22 @@
 
 // export default App;
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Component/Navbar/Navbar';
 import HomeBanner from './Component/Home/HomeBanner';
 import Footer from './Component/Footer/Footer';
+import Contact from './Component/Contact/Contact';
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <Navbar />
-      <HomeBanner />
+      <Routes>
+        <Route path="/homebanner" element={<HomeBanner />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       <Footer />
-    </div>
-    
+    </Router>
   );
 };
 
