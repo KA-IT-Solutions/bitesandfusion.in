@@ -87,9 +87,8 @@ const Footer = () => {
           <h4 className="text-lg font-bold text-black">Opening Hours</h4> {/* Updated for bold and black color */}
           <p className="text-sm flex items-center">
             <FontAwesomeIcon icon={faMapMarkerAlt} className="text-orange-500 mr-2" /> Sr no
-            119/1/15 Sankalp Society near One West Building, Balewadi
-            Highstreet Road, Baner, Pune-45
-          </p>
+            Sr.no.36/2 HΝο.166,Near Mahaganesh Nagari,
+            Keshav Nager Mundhwa 411036.          </p>
           <p className="text-sm flex items-center">
             <FontAwesomeIcon icon={faPhone} className="text-orange-500 mr-2" /> +91 79722
             39800

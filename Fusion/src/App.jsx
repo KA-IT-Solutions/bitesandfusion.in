@@ -59,20 +59,24 @@
 // }
 
 // export default App;
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './Component/Navbar/Navbar';
-import HomeBanner from './Component/Home/HomeBanner';
-import Footer from './Component/Footer/Footer';
-import Contact from './Component/Contact/Contact';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./Component/Navbar/Navbar";
+import Footer from "./Component/Footer/Footer";
+import Contact from "./Component/Contact/Contact";
+import Home from "./Component/Home/Home";
+import Juices from "./Component/Juices/Juices";
+import SmoothiesForKids from "./Component/SmoothiesForKids/SmoothiesForKids";
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/homebanner" element={<HomeBanner />} />
+        <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/juices" element={<Juices />} />
+        <Route path="/healthy-kids" element={<SmoothiesForKids />} />
       </Routes>
       <Footer />
     </Router>
