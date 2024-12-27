@@ -1,8 +1,8 @@
-
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import the AOS styles
 import ProductBanner from '../Home/ProductBanner';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
 
 const products = [
   {
@@ -91,8 +91,17 @@ const Juices = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold text-center mb-8">Juices</h1>
+    <div className="container mx-auto p-2">
+      {/* Title Section with a link to the Home page */}
+      <div className="flex justify-start mb-2">
+        <Link to="/" className="text-xl text-orange-500 hover:text-orange-700">
+          Home
+        </Link>
+      </div>
+
+      {/* Page Title */}
+      <h1 className="text-4xl font-bold text-center mb-4">Juices</h1>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map((product) => (
           <div
@@ -121,11 +130,10 @@ const Juices = () => {
           </div>
         ))}
       </div>
-      <>
-        <ProductBanner/>
-      </>
+
+      {/* Product Banner Section */}
+      <ProductBanner />
     </div>
-    
   );
 };
 
