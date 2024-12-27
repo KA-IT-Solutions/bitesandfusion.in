@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
 import ProductBanner from '../Home/ProductBanner';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const smoothies = [
   {
@@ -72,10 +73,20 @@ const SmoothiesForKids = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold text-center mb-8" data-aos="fade-up">
+    <div className="container mx-auto p-2">
+      {/* Title Section with a link to Home */}
+      <div className="flex justify-start mb-2">
+        <Link to="/" className="text-xl text-orange-500 hover:text-orange-700">
+          Home
+        </Link>
+      </div>
+
+      {/* Page Title */}
+      <h1 className="text-4xl font-bold text-center mb-2" data-aos="fade-up">
         Smoothies for Kids
       </h1>
+
+      {/* Smoothie List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {smoothies.map((smoothie) => (
           <div
@@ -110,6 +121,8 @@ const SmoothiesForKids = () => {
           </div>
         ))}
       </div>
+
+      {/* Product Banner Section */}
       <ProductBanner />
     </div>
   );

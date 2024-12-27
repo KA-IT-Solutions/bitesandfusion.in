@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
 import ProductBanner from '../Home/ProductBanner';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const specialBowls = [
   {
@@ -36,8 +37,20 @@ const SpecialBowlComponent = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center my-8" data-aos="fade-up">Special Bowl</h1>
+    <div className="container mx-auto px-2">
+      {/* Title Section with a link to Home */}
+      <div className="flex justify-start mb-2">
+        <Link to="/" className="text-xl text-orange-500 hover:text-orange-700">
+          Home
+        </Link>
+      </div>
+
+      {/* Page Title */}
+      <h1 className="text-4xl font-bold text-center my-4" data-aos="fade-up">
+        Special Bowl
+      </h1>
+
+      {/* Special Bowls List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {specialBowls.map((bowl) => (
           <div
@@ -70,6 +83,8 @@ const SpecialBowlComponent = () => {
           </div>
         ))}
       </div>
+
+      {/* Product Banner Section */}
       <ProductBanner />
     </div>
   );
