@@ -30,27 +30,27 @@ const Footer = () => {
           <h4 className="text-lg font-bold text-black">Quick Links</h4> {/* Updated for bold and black color */}
           <ul className="space-y-1">
             <li>
-              <a href="#juices" className="hover:text-orange-500">
+              <a href="/juices" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faGlassWhiskey} className="mr-2" /> Juices
               </a>
             </li>
             <li>
-              <a href="#healthy-kids" className="hover:text-orange-500">
+              <a href="/healthy-kids" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faChild} className="mr-2" /> Healthy Kids
               </a>
             </li>
             <li>
-              <a href="#smoothies" className="hover:text-orange-500">
+              <a href="/smoothies" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faBlender} className="mr-2" /> Smoothies
               </a>
             </li>
             <li>
-              <a href="#special-bowl" className="hover:text-orange-500">
+              <a href="/bowl" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faBowlFood} className="mr-2" /> Special Bowl
               </a>
             </li>
             <li>
-              <a href="#about-us" className="hover:text-orange-500">
+              <a href="/about-us" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faInfoCircle} className="mr-2" /> About Us
               </a>
             </li>
@@ -60,22 +60,22 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#terms" className="hover:text-orange-500">
+              <a href="/terms" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faGavel} className="mr-2" /> Terms and Conditions
               </a>
             </li>
             <li>
-              <a href="#privacy-policy" className="hover:text-orange-500">
+              <a href="/privacy-policy" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faShieldAlt} className="mr-2" /> Privacy Policy
               </a>
             </li>
             <li>
-              <a href="#refund-policy" className="hover:text-orange-500">
+              <a href="/refund-policy" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faUndoAlt} className="mr-2" /> Cancellation and Refund
               </a>
             </li>
             <li>
-              <a href="#delivery-policy" className="hover:text-orange-500">
+              <a href="/delivery-policy" className="hover:text-orange-500">
                 <FontAwesomeIcon icon={faTruck} className="mr-2" /> Shipping and Delivery Policy
               </a>
             </li>

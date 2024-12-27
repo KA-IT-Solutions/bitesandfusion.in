@@ -35,13 +35,13 @@ const Navbar = () => {
             Healthy Kids
           </a>
           <a
-            href="#smoothies"
+            href="/smoothies"
             className="text-black hover:text-orange-500 font-medium"
           >
             Smoothies
           </a>
           <a
-            href="#special-bowl"
+            href="/bowl"
             className="text-black hover:text-orange-500 font-medium"
           >
             Special Bowl
@@ -97,25 +97,25 @@ const Navbar = () => {
         </button>
         <nav className="flex flex-col space-y-4 mt-12 px-6">
           <a
-            href="#juices"
+            href="/juices"
             className="text-black hover:text-orange-500 text-lg font-medium"
           >
             Juices
           </a>
           <a
-            href="#healthy-kids"
+            href="/healthy-kids"
             className="text-black hover:text-orange-500 text-lg font-medium"
           >
             Healthy Kids
           </a>
           <a
-            href="#smoothies"
+            href="/smoothies"
             className="text-black hover:text-orange-500 text-lg font-medium"
           >
             Smoothies
           </a>
           <a
-            href="#special-bowl"
+            href="/bowl"
             className="text-black hover:text-orange-500 text-lg font-medium"
           >
             Special Bowl

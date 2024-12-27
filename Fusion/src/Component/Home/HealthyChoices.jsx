@@ -64,7 +64,9 @@
 // };
 
 // export default HealthyChoices;
-import React from "react"; 
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS CSS
 
 const HealthyChoices = () => {
   const choices = [
@@ -94,6 +96,10 @@ const HealthyChoices = () => {
     },
   ];
 
+  useEffect(() => {
+    AOS.init(); // Initialize AOS on component mount
+  }, []);
+
   return (
     <section className="py-12 px-8">
       <div className="text-center mb-12">
@@ -111,12 +117,14 @@ const HealthyChoices = () => {
           <div
             key={index}
             className="bg-gray-50 rounded-lg shadow-lg overflow-hidden flex flex-col"
+            data-aos="fade-up" // Add fade-up animation
+            data-aos-delay={index * 100} // Add delay based on the index
           >
             {/* Image with rounded corners */}
             <img
               src={choice.image}
               alt={choice.name}
-              className="w-full h-auto object-cover rounded-lg" // Add rounded-lg here for rounded corners
+              className="w-full h-auto object-cover rounded-lg"
             />
             <div className="p-4 flex-grow">
               {/* Decreased font size for name */}
