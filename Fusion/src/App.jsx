@@ -12,6 +12,7 @@ import TermsAndConditions from "./Component/TermsAndConditions/TermsAndCondition
 import PrivacyPolicy from "./Component/PrivacyPolicy/PrivacyPolicy";
 import CancellationAndRefundPolicy from "./Component/CancellationAndRefundPolicy/CancellationAndRefundPolicy";
 import ShippingAndDeliveryPolicy from "./Component/ShippingAndDeliveryPolicy/ShippingAndDeliveryPolicy";
+import AboutUs from "./Component/AboutUs/AboutUs";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />}/>
         <Route path="/refund-policy" element={<CancellationAndRefundPolicy />}/>
         <Route path="/delivery-policy" element={<ShippingAndDeliveryPolicy />}/>
+        <Route path="/about-us" element={<AboutUs/>}/>
       </Routes>
       <Footer />
     </Router>
