@@ -8,25 +8,25 @@
 //   {
 //     id: 1,
 //     name: 'Oats and Seed Bowl',
-//     price: 375.00,
+//     price: 299.00,
 //     imageUrl: 'b1.jpg',
 //   },
 //   {
 //     id: 2,
 //     name: 'Honey Dry Fruit and Oats Bowl',
-//     price: 375.00,
+//     price: 299.00,
 //     imageUrl: 'b2.jpg',
 //   },
 //   {
 //     id: 3,
 //     name: 'Dates and Seed Fusion Bowl',
-//     price: 375.00,
+//     price: 299.00,
 //     imageUrl: 'b3.jpg',
 //   },
 //   {
 //     id: 4,
 //     name: 'Bites Fusion Special Bowl',
-//     price: 375.00,
+//     price: 299.00,
 //     imageUrl: 'b4.jpg',
 //   },
 // ];
@@ -35,6 +35,13 @@
 //   useEffect(() => {
 //     AOS.init(); // Initialize AOS when the component mounts
 //   }, []);
+
+//   // Function to handle booking via WhatsApp
+//   const handleBookNow = (bowlName, price, quantity) => {
+//     const message = `Hi, I would like to book the following bowl:\n\nName: ${bowlName}\nPrice: ₹${price}\nQuantity: ${quantity}`;
+//     const whatsappLink = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+//     window.open(whatsappLink, '_blank');
+//   };
 
 //   return (
 //     <div className="container mx-auto px-2">
@@ -74,8 +81,16 @@
 //                   min="1"
 //                   defaultValue="1"
 //                   className="border rounded w-16 px-2 py-1 mr-2 text-center"
+//                   id={`quantity-${bowl.id}`} // Add ID for quantity input
 //                 />
-//                 <button className="bg-orange-500 text-white px-4 py-2 rounded" data-aos="fade-up">
+//                 <button
+//                   className="bg-orange-500 text-white px-4 py-2 rounded"
+//                   data-aos="fade-up"
+//                   onClick={() => {
+//                     const quantity = document.getElementById(`quantity-${bowl.id}`).value;
+//                     handleBookNow(bowl.name, bowl.price, quantity);
+//                   }}
+//                 >
 //                   Book Now
 //                 </button>
 //               </div>
@@ -91,7 +106,7 @@
 // };
 
 // export default SpecialBowlComponent;
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
 import ProductBanner from '../Home/ProductBanner';
@@ -101,30 +116,36 @@ const specialBowls = [
   {
     id: 1,
     name: 'Oats and Seed Bowl',
-    price: 375.00,
+    price: 299.00,
     imageUrl: 'b1.jpg',
+    ingredients: 'Oats, Seeds, Honey, Dry Fruits'
   },
   {
     id: 2,
     name: 'Honey Dry Fruit and Oats Bowl',
-    price: 375.00,
+    price: 299.00,
     imageUrl: 'b2.jpg',
+    ingredients: 'Honey, Dry Fruits, Oats'
   },
   {
     id: 3,
     name: 'Dates and Seed Fusion Bowl',
-    price: 375.00,
+    price: 299.00,
     imageUrl: 'b3.jpg',
+    ingredients: 'Dates, Seeds, Honey, Oats'
   },
   {
     id: 4,
     name: 'Bites Fusion Special Bowl',
-    price: 375.00,
+    price: 299.00,
     imageUrl: 'b4.jpg',
+    ingredients: 'Special Mix of Oats, Seeds, and Dry Fruits'
   },
 ];
 
 const SpecialBowlComponent = () => {
+  const [selectedBowl, setSelectedBowl] = useState(null);
+
   useEffect(() => {
     AOS.init(); // Initialize AOS when the component mounts
   }, []);
@@ -134,6 +155,16 @@ const SpecialBowlComponent = () => {
     const message = `Hi, I would like to book the following bowl:\n\nName: ${bowlName}\nPrice: ₹${price}\nQuantity: ${quantity}`;
     const whatsappLink = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, '_blank');
+  };
+
+  // Function to handle showing ingredients
+  const handleShowIngredients = (bowl) => {
+    setSelectedBowl(bowl);
+  };
+
+  // Function to close ingredients modal
+  const handleCloseIngredients = () => {
+    setSelectedBowl(null);
   };
 
   return (
@@ -177,7 +208,7 @@ const SpecialBowlComponent = () => {
                   id={`quantity-${bowl.id}`} // Add ID for quantity input
                 />
                 <button
-                  className="bg-orange-500 text-white px-4 py-2 rounded"
+                  className="bg-orange-500 text-white px-2 py-2 rounded mr-2"
                   data-aos="fade-up"
                   onClick={() => {
                     const quantity = document.getElementById(`quantity-${bowl.id}`).value;
@@ -186,11 +217,44 @@ const SpecialBowlComponent = () => {
                 >
                   Book Now
                 </button>
+                <button
+                  className="bg-green-500 text-white px-2 py-2 rounded"
+                  data-aos="fade-up"
+                  onClick={() => handleShowIngredients(bowl)}
+                >
+                  Ingredients
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Ingredients Modal */}
+      {selectedBowl && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 md:w-1/2 lg:w-1/3">
+            <h2 className="text-2xl font-bold mb-4">{selectedBowl.name}</h2>
+            <img
+              src={selectedBowl.imageUrl}
+              alt={selectedBowl.name}
+              className="w-full h-60 object-cover mb-4"
+            />
+            <h3 className="text-lg font-semibold mb-2">Ingredients:</h3>
+            <ul className="list-disc pl-6 mb-4">
+              {selectedBowl.ingredients.split(',').map((ingredient, index) => (
+                <li key={index}>{ingredient.trim()}</li>
+              ))}
+            </ul>
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded"
+              onClick={handleCloseIngredients}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Product Banner Section */}
       <ProductBanner />

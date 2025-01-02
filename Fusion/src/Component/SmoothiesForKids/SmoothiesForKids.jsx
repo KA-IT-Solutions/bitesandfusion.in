@@ -8,61 +8,61 @@
 //   {
 //     id: 1,
 //     name: 'Copycat Orange Julius Smoothie',
-//     price: '₹235.00',
+//     price: '₹199.00',
 //     image: 'k1.jpg'
 //   },
 //   {
 //     id: 2,
 //     name: 'Blueberry Kale Smoothie',
-//     price: '₹270.00',
+//     price: '₹200.00',
 //     image: 'k2.jpg'
 //   },
 //   {
 //     id: 3,
 //     name: 'Cacao Almond Bliss Smoothie',
-//     price: '₹235.00',
+//     price: '₹200.00',
 //     image: 'k3.jpg'
 //   },
-//   {
-//     id: 4,
-//     name: 'Green Pear Smoothie',
-//     price: '₹235.00',
-//     image: 'k4.jpg'
-//   },
+//   // {
+//   //   id: 4,
+//   //   name: 'Green Pear Smoothie',
+//   //   price: '₹235.00',
+//   //   image: 'k4.jpg'
+//   // },
 //   {
 //     id: 5,
 //     name: 'Emerald Smoothie (Green Smoothie)',
-//     price: '₹235.00',
+//     price: '₹199.00',
 //     image: 'k5.jpg'
 //   },
 //   {
 //     id: 6,
 //     name: 'Pumpkin Banana Smoothie',
-//     price: '₹215.00',
+//     price: '₹180.00',
 //     image: 'k6.jpg'
 //   },
 //   {
 //     id: 7,
-//     name: 'Pumpkin Banana Smoothie',
-//     price: '₹215.00',
+//     name: 'Blueberry Smoothie',
+//     price: '₹200.00',
 //     image: 'k7.jpg'
 //   },
 //   {
 //     id: 8,
-//     name: 'Pumpkin Banana Smoothie',
-//     price: '₹215.00',
+//     name: 'Pineapple Coconut Smoothie',
+//     price: '₹199.00',
 //     image: 'k8.jpg'
 //   },
 //   {
 //     id: 10,
-//     name: 'Pumpkin Banana Smoothie',
-//     price: '₹215.00',
+//     name: 'Chocolate Banana Smoothie',
+//     price: '₹180.00',
 //     image: 'smoothie.jpg'
 //   },
 //   {
 //     id: 11,
-//     name: 'Pumpkin Banana Smoothie',
-//     price: '₹215.00',
+//     name: 'Orange Creamsicle Smoothie',
+//     price: '₹200.00',
 //     image: 'k10.jpg'
 //   }
 // ];
@@ -71,6 +71,13 @@
 //   useEffect(() => {
 //     AOS.init(); // Initialize AOS on component mount
 //   }, []);
+
+//   // Function to handle booking via WhatsApp
+//   const handleBookNow = (smoothieName, price, quantity) => {
+//     const message = `Hi, I would like to book the following smoothie:\n\nName: ${smoothieName}\nPrice: ${price}\nQuantity: ${quantity}`;
+//     const whatsappLink = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+//     window.open(whatsappLink, '_blank');
+//   };
 
 //   return (
 //     <div className="container mx-auto p-2">
@@ -113,8 +120,16 @@
 //                 min="1"
 //                 defaultValue="1"
 //                 className="w-16 border rounded-md p-1 text-center mr-4"
+//                 id={`quantity-${smoothie.id}`} // Add ID for quantity field
 //               />
-//               <button className="bg-orange-500 text-white py-2 px-4 rounded-md" data-aos="fade-up">
+//               <button
+//                 className="bg-orange-500 text-white py-2 px-4 rounded-md"
+//                 data-aos="fade-up"
+//                 onClick={() => {
+//                   const quantity = document.getElementById(`quantity-${smoothie.id}`).value;
+//                   handleBookNow(smoothie.name, smoothie.price, quantity);
+//                 }}
+//               >
 //                 Book Now
 //               </button>
 //             </div>
@@ -129,7 +144,7 @@
 // };
 
 // export default SmoothiesForKids;
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
 import ProductBanner from '../Home/ProductBanner';
@@ -139,66 +154,71 @@ const smoothies = [
   {
     id: 1,
     name: 'Copycat Orange Julius Smoothie',
-    price: '₹235.00',
-    image: 'k1.jpg'
+    price: '₹199.00',
+    image: 'k1.jpg',
+    ingredients: ['Orange', 'Banana', 'Sugar', 'Ice']
   },
   {
     id: 2,
     name: 'Blueberry Kale Smoothie',
-    price: '₹270.00',
-    image: 'k2.jpg'
+    price: '₹200.00',
+    image: 'k2.jpg',
+    ingredients: ['Blueberry', 'Kale', 'Almond Milk', 'Honey']
   },
   {
     id: 3,
     name: 'Cacao Almond Bliss Smoothie',
-    price: '₹235.00',
-    image: 'k3.jpg'
-  },
-  {
-    id: 4,
-    name: 'Green Pear Smoothie',
-    price: '₹235.00',
-    image: 'k4.jpg'
+    price: '₹200.00',
+    image: 'k3.jpg',
+    ingredients: ['Cacao', 'Almond', 'Banana', 'Almond Milk']
   },
   {
     id: 5,
     name: 'Emerald Smoothie (Green Smoothie)',
-    price: '₹235.00',
-    image: 'k5.jpg'
+    price: '₹199.00',
+    image: 'k5.jpg',
+    ingredients: ['Spinach', 'Avocado', 'Coconut Water', 'Lime']
   },
   {
     id: 6,
     name: 'Pumpkin Banana Smoothie',
-    price: '₹215.00',
-    image: 'k6.jpg'
+    price: '₹180.00',
+    image: 'k6.jpg',
+    ingredients: ['Pumpkin', 'Banana', 'Cinnamon', 'Almond Milk']
   },
   {
     id: 7,
-    name: 'Pumpkin Banana Smoothie',
-    price: '₹215.00',
-    image: 'k7.jpg'
+    name: 'Blueberry Smoothie',
+    price: '₹200.00',
+    image: 'k7.jpg',
+    ingredients: ['Blueberry', 'Yogurt', 'Honey', 'Ice']
   },
   {
     id: 8,
-    name: 'Pumpkin Banana Smoothie',
-    price: '₹215.00',
-    image: 'k8.jpg'
+    name: 'Pineapple Coconut Smoothie',
+    price: '₹199.00',
+    image: 'k8.jpg',
+    ingredients: ['Pineapple', 'Coconut', 'Yogurt', 'Honey']
   },
   {
     id: 10,
-    name: 'Pumpkin Banana Smoothie',
-    price: '₹215.00',
-    image: 'smoothie.jpg'
+    name: 'Chocolate Banana Smoothie',
+    price: '₹180.00',
+    image: 'smoothie.jpg',
+    ingredients: ['Chocolate', 'Banana', 'Almond Milk', 'Cinnamon']
   },
   {
     id: 11,
-    name: 'Pumpkin Banana Smoothie',
-    price: '₹215.00',
-    image: 'k10.jpg'
+    name: 'Orange Creamsicle Smoothie',
+    price: '₹200.00',
+    image: 'k10.jpg',
+    ingredients: ['Orange', 'Vanilla', 'Yogurt', 'Honey']
   }
 ];
 
 const SmoothiesForKids = () => {
+  const [selectedSmoothie, setSelectedSmoothie] = useState(null);
+
   useEffect(() => {
     AOS.init(); // Initialize AOS on component mount
   }, []);
@@ -208,6 +228,11 @@ const SmoothiesForKids = () => {
     const message = `Hi, I would like to book the following smoothie:\n\nName: ${smoothieName}\nPrice: ${price}\nQuantity: ${quantity}`;
     const whatsappLink = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, '_blank');
+  };
+
+  // Function to handle showing the selected smoothie info
+  const handleShowIngredients = (smoothie) => {
+    setSelectedSmoothie(smoothie);
   };
 
   return (
@@ -254,7 +279,7 @@ const SmoothiesForKids = () => {
                 id={`quantity-${smoothie.id}`} // Add ID for quantity field
               />
               <button
-                className="bg-orange-500 text-white py-2 px-4 rounded-md"
+                className="bg-orange-500 text-white px-2 py-2 rounded mr-2"
                 data-aos="fade-up"
                 onClick={() => {
                   const quantity = document.getElementById(`quantity-${smoothie.id}`).value;
@@ -263,10 +288,44 @@ const SmoothiesForKids = () => {
               >
                 Book Now
               </button>
+
+              {/* Ingredient Button */}
+              <button
+                className="bg-green-500 text-white py-2 px-2 rounded-md"
+                onClick={() => handleShowIngredients(smoothie)}
+              >
+                Ingredients
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Modal or Product Info */}
+      {selectedSmoothie && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-8 rounded-lg w-80">
+            <h2 className="text-2xl font-semibold mb-4">{selectedSmoothie.name}</h2>
+            <img
+              src={selectedSmoothie.image}
+              alt={selectedSmoothie.name}
+              className="w-full h-48 object-cover mb-4"
+            />
+            <h3 className="text-lg font-medium mb-2">Ingredients:</h3>
+            <ul className="list-disc pl-6 mb-4">
+              {selectedSmoothie.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient}</li>
+              ))}
+            </ul>
+            <button
+              className="bg-red-500 text-white py-2 px-4 rounded-md"
+              onClick={() => setSelectedSmoothie(null)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Product Banner Section */}
       <ProductBanner />

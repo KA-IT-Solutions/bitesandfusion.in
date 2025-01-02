@@ -46,6 +46,12 @@ const Navbar = () => {
           >
             Special Bowl
           </a>
+          <a
+            href="/mocktails"
+            className="text-black hover:text-orange-500 font-medium"
+          >
+            Mocktails
+          </a>
        
         </nav>
 
@@ -119,6 +125,12 @@ const Navbar = () => {
             className="text-black hover:text-orange-500 text-lg font-medium"
           >
             Special Bowl
+          </a>
+          <a
+            href="/mocktails"
+            className="text-black hover:text-orange-500 text-lg font-medium"
+          >
+            Mocktails
           </a>
           </nav>
       </div>
