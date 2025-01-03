@@ -83,16 +83,16 @@ const HealthyChoices = () => {
       image: "/hc3.jpg",
     },
     {
-      name: "Mean Greens",
-      image: "/hc4.jpg",
+      name: "WaterMelon Mojito",
+      image: "/m6.jpg",
     },
     {
       name: "Pineapple Detox Tonic",
-      image: "/hc5.jpg",
+      image: "/j10.jpg",
     },
     {
       name: "Orange Creamsicle Smoothie",
-      image: "/hc6.jpg",
+      image: "/k10.jpg",
     },
   ];
 

@@ -292,6 +292,7 @@ const SmoothiesForKids = () => {
               {/* Ingredient Button */}
               <button
                 className="bg-green-500 text-white py-2 px-2 rounded-md"
+                data-aos="fade-up"
                 onClick={() => handleShowIngredients(smoothie)}
               >
                 Ingredients
